@@ -1,0 +1,43 @@
+DATA_ACTION_,IS_REFERENCED,RULE_ID,RULE_LEVEL,DESCRIPTION,NAME,STATUS,APPLICABLE_CONDITION,CONTENT,INSERT_BY,UPDATE_BY,RECORD_USAGE,INSERT_TIME,UPDATE_TIME,RULE_OBJECT_CODE
+Unknown,false,351949274,ProductPlanLimit,Tokio Marine Blacklist Check,00070003_BlackList_PolicyRisk,1,,"def IdNo=IdNo.val
+def IdType=IdType.val
+def result_Check=null
+
+if(IdNo!=null){
+ 
+  if(IdType==""1""){ //IDNo
+    result_Check=lookupForList(""00070003_BlackList"",[""IDNo"":IdNo])
+  }else if(IdType==""7"" || IdType==""8""){//PassportNo
+    result_Check=lookupForList(""00070003_BlackList"",[""PassportNo"":IdNo])
+  }
+  
+}
+
+if(result_Check != null && result_Check.size() > 0){
+    //error(""BalckList Check Result: The Insured IDNo ""+IdNo+"" is Blacked, can not apply!"" )
+    error(""EBAO-PA-UW-B0003"", [""Insured"",IdNo] as Object[])
+}",17312387,1100007394851,5,2019-04-24 01:36:32.0,2021-12-14 01:51:40.0,
+Unknown,false,351951471,PolicyRisk,,00070003_InsuredAgeLimit,1,,"def dob=DateOfBirth.val
+def currentdate=now()
+
+def yearsBetween = getYear(currentdate)-getYear(dob)
+def monthsBetween = getMonth(currentdate)-getMonth(dob)
+def days0=dob.toString().split('T')[0].split('-')[2].toLong()
+def days1=currentdate.toString().split('T')[0].split('-')[2].toLong()
+def daysBetween = days1-days0
+
+def age=yearsBetween
+if(monthsBetween < 0){
+   age =yearsBetween-1
+}else if(monthsBetween==0){
+  if(daysBetween <0){
+    age =yearsBetween-1
+  }
+}else{
+  age=yearsBetween 
+}
+if(age>85){
+  //error(""InsuredAgeLimit Check Result: The Insured's Age is: "" + age +"", Only [0,85] can apply."")
+   error(""EBAO-PA-UW-B0002"", [age,""[0,85""] as Object[])
+}
+//error(""The Age is: "" + age +"".(""+yearsBetween +"" years & (""+monthsBetween +"")months & (""+daysBetween +"") days.)"")",17312387,17312387,5,2019-04-26 02:37:48.0,2019-05-08 11:54:23.0,

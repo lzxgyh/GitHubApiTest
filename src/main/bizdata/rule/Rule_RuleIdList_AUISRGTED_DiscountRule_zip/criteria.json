@@ -1,0 +1,18 @@
+{
+  "Criteria" : "RuleIdList",
+  "Dataset" : "Rule",
+  "ParamMap" : {
+    "RuleIdList" : "351949274,351951471",
+    "recordUsage" : 5
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 351949274, "ProductPlanLimit", "Tokio Marine Blacklist Check", "00070003_BlackList_PolicyRisk", 1, null, "def IdNo=IdNo.val\ndef IdType=IdType.val\ndef result_Check=null\n\nif(IdNo!=null){\n \n  if(IdType==\"1\"){ //IDNo\n    result_Check=lookupForList(\"00070003_BlackList\",[\"IDNo\":IdNo])\n  }else if(IdType==\"7\" || IdType==\"8\"){//PassportNo\n    result_Check=lookupForList(\"00070003_BlackList\",[\"PassportNo\":IdNo])\n  }\n  \n}\n\nif(result_Check != null && result_Check.size() > 0){\n    //error(\"BalckList Check Result: The Insured IDNo \"+IdNo+\" is Blacked, can not apply!\" )\n    error(\"EBAO-PA-UW-B0003\", [\"Insured\",IdNo] as Object[])\n}", 17312387, 1100007394851, 5, 1556069792000, 1639446700000, null ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 351951471, "PolicyRisk", null, "00070003_InsuredAgeLimit", 1, null, "def dob=DateOfBirth.val\ndef currentdate=now()\n\ndef yearsBetween = getYear(currentdate)-getYear(dob)\ndef monthsBetween = getMonth(currentdate)-getMonth(dob)\ndef days0=dob.toString().split('T')[0].split('-')[2].toLong()\ndef days1=currentdate.toString().split('T')[0].split('-')[2].toLong()\ndef daysBetween = days1-days0\n\ndef age=yearsBetween\nif(monthsBetween < 0){\n   age =yearsBetween-1\n}else if(monthsBetween==0){\n  if(daysBetween <0){\n    age =yearsBetween-1\n  }\n}else{\n  age=yearsBetween \n}\nif(age>85){\n  //error(\"InsuredAgeLimit Check Result: The Insured's Age is: \" + age +\", Only [0,85] can apply.\")\n   error(\"EBAO-PA-UW-B0002\", [age,\"[0,85\"] as Object[])\n}\n//error(\"The Age is: \" + age +\".(\"+yearsBetween +\" years & (\"+monthsBetween +\")months & (\"+daysBetween +\") days.)\")", 17312387, 17312387, 5, 1556246268000, 1557316463000, null ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}
