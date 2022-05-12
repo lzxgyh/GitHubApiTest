@@ -1,0 +1,756 @@
+{
+  "ModuleList" : [ {
+    "DatasetList" : [ {
+      "BaseTableName" : "T_PUB_RES_CTX_TYPE",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage AND CONTEXT_TYPE_ID = :contextTypeId ",
+        "CriteriaName" : "contextTypeQuery",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "contextTypeId"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? AND CONTEXT_TYPE_ID = ? ",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "contextTypeId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "ResourceContextTypeRelation"
+    }, {
+      "BaseTableName" : "T_PUB_RES_CTX_RELATION",
+      "CriteriaList" : [ {
+        "Condition" : "RESOURCE_ID IN (:resourceIds) AND CONTEXT_TYPE_ID = :contextTypeId AND RESOURCE_TYPE_ID =:resourceTypeId AND CONTEXT_ID =:contextId",
+        "CriteriaName" : "contextQuery",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "contextTypeId"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "resourceTypeId"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "contextId"
+        }, {
+          "DataType" : "ARRAY",
+          "ParamName" : "resourceIds"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_ID IN (?) AND CONTEXT_TYPE_ID = ? AND RESOURCE_TYPE_ID =? AND CONTEXT_ID =?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "resourceIds"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "contextTypeId"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "resourceTypeId"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "contextId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "ResourceContextRelation"
+    }, {
+      "BaseTableName" : "T_PUB_RES_CTX_RELATION",
+      "CriteriaList" : [ {
+        "Condition" : "CONTEXT_TYPE_ID = :contextTypeId AND RESOURCE_TYPE_ID =:resourceTypeId AND CONTEXT_ID =:contextId",
+        "CriteriaName" : "contextQuery",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "contextTypeId"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "resourceTypeId"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "contextId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CONTEXT_TYPE_ID = ? AND RESOURCE_TYPE_ID =? AND CONTEXT_ID =?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "contextTypeId"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "resourceTypeId"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "contextId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "NewResourceContextRelation"
+    }, {
+      "BaseTableName" : "T_PUB_RES_CTX_RELATION",
+      "CriteriaList" : [ {
+        "Condition" : "RES_CTX_RELATION_ID IN (:relationIds)",
+        "CriteriaName" : "relationIds",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "relationIds"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RES_CTX_RELATION_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "relationIds"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "PubContextByRelationIds"
+    }, {
+      "BaseTableName" : "T_PUB_RES_CTX_RELATION",
+      "CriteriaList" : [ {
+        "Condition" : "RESOURCE_ID IN (:resourceIds) AND RESOURCE_TYPE_ID =:resourceTypeId",
+        "CriteriaName" : "contextQuery",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "resourceTypeId"
+        }, {
+          "DataType" : "ARRAY",
+          "ParamName" : "resourceIds"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_ID IN (?) AND RESOURCE_TYPE_ID =?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "resourceIds"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "resourceTypeId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "RelationsForResources"
+    }, {
+      "BaseTableName" : "T_PUB_CONFIGURATION_GROUP",
+      "CriteriaList" : [ {
+        "Condition" : "GROUP_ID IN (:groupIdList)",
+        "CriteriaName" : "groupIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "groupIdList"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "GROUP_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "groupIdList"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "Group"
+    }, {
+      "BaseTableName" : "T_PUB_CONFIGURATION_GROUP",
+      "CriteriaList" : [ {
+        "Condition" : "GROUP_ID IN (:groupIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "groupIdListAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "groupIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "GROUP_ID IN (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "groupIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "GroupByRecordUsage"
+    }, {
+      "BaseTableName" : "T_PUB_CONFIGURATION_GROUP",
+      "CriteriaList" : [ {
+        "Condition" : "RESOURCE_TYPE_ID = :resourceTypeId",
+        "CriteriaName" : "resourceTypeId",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "resourceTypeId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_TYPE_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "resourceTypeId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "GroupByResourceType"
+    }, {
+      "BaseTableName" : "T_PUB_MESSAGE",
+      "CriteriaList" : [ {
+        "Condition" : "MESSAGE_ID in (:messageIdList) AND RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "messageIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "messageIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "MESSAGE_ID in (?) AND RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "messageIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "REFERENCE_ID = {T_PUB_MESSAGE.MESSAGE_ID} AND CODE_TYPE = 3",
+        "DatasetName" : "PubMessageI18nRefData",
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "REFERENCE_ID = ? AND CODE_TYPE = 3",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_PUB_MESSAGE.MESSAGE_ID}"
+          } ]
+        },
+        "TableName" : null
+      } ],
+      "SetName" : "PubMessage"
+    }, {
+      "BaseTableName" : "T_I18N_CODE",
+      "CriteriaList" : [ {
+        "Condition" : "REFERENCE_ID IN (:REF_ID_LIST) AND CODE_TYPE = 3",
+        "CriteriaName" : "REF",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "REF_ID_LIST"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "REFERENCE_ID IN (?) AND CODE_TYPE = 3",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "REF_ID_LIST"
+          } ]
+        }
+      } ],
+      "Description" : "I18n Ref Data",
+      "IncludeList" : [ {
+        "Condition" : "MESSAGE_CODE = {T_I18N_CODE.MESSAGE_CODE}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "MESSAGE_CODE = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_I18N_CODE.MESSAGE_CODE}"
+          } ]
+        },
+        "TableName" : "T_PUB_RESOURCE_BUNDLE"
+      } ],
+      "SetName" : "PubMessageI18nRefData"
+    } ],
+    "Description" : null,
+    "ModuleName" : "context",
+    "TableList" : [ {
+      "ColumnList" : [ {
+        "ColumnName" : "CONTEXT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DATA_SOURCE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ID_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CODE_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTEXT_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "ORDER_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTEXT_RUNTIME_TYPE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "DATA_SOURCE_URL",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_CONTEXT_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RESOURCE_TABLE_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RESOURCE_ID_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RESOURCE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RESOURCE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_RESOURCE_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RES_CTX_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CONTEXT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CONTEXT_TYPE_ID",
+        "ReferencingTableName" : "T_PUB_CONTEXT_TYPE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RESOURCE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RESOURCE_TYPE_ID",
+        "ReferencingTableName" : "T_PUB_RESOURCE_TYPE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_RES_CTX_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RES_CTX_RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CONTEXT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_RES_CTX_RELATION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "MODULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_CONFIGURATION_GROUP"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "MESSAGE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MESSAGE_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MESSAGE_DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MESSAGE_CONTENT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MESSAGE_LEVEL",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "MESSAGE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "MESSAGE_CODE",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_MESSAGE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "CODE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MESSAGE_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CODE_TYPE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "CONFIG_GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "REFERENCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "REFERENCE_TYPE",
+        "DataType" : "INTEGER"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "MESSAGE_CODE",
+          "DataType" : "STRING"
+        }, {
+          "ColumnName" : "RECORD_USAGE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_I18N_CODE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "LANGUAGE_ID",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MESSAGE_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MESSAGE_DATA",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CODE_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RESOURCE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CODE_ID",
+        "ReferencingTableName" : "T_I18N_CODE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "MESSAGE_CODE",
+          "DataType" : "STRING"
+        }, {
+          "ColumnName" : "LANGUAGE_ID",
+          "DataType" : "STRING"
+        }, {
+          "ColumnName" : "RECORD_USAGE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_RESOURCE_BUNDLE"
+    } ]
+  } ],
+  "Preprocessed_" : true,
+  "TableDependencyMap_" : {
+    "T_I18N_CODE" : {
+      "T_PUB_RESOURCE_BUNDLE" : [ "CODE_ID" ]
+    },
+    "T_PUB_RESOURCE_TYPE" : {
+      "T_PUB_RES_CTX_TYPE" : [ "RESOURCE_TYPE_ID" ]
+    },
+    "T_PUB_CONTEXT_TYPE" : {
+      "T_PUB_RES_CTX_TYPE" : [ "CONTEXT_TYPE_ID" ]
+    }
+  }
+}

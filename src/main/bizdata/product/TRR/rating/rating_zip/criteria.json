@@ -1,0 +1,14 @@
+{
+  "Criteria" : "definitionIdList",
+  "Dataset" : "RatingCalculationDefinition",
+  "ParamMap" : {
+    "definitionIdList" : "360010849",
+    "recordUsage" : 5
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360010849, "PEI", "Product - PEI", null, 17312387, 17312387, 5, 1559585160000, 1574783473000, 26, null, null ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}

@@ -1,0 +1,26 @@
+{
+  "Criteria" : "RuleIdList",
+  "Dataset" : "Rule",
+  "ParamMap" : {
+    "recordUsage" : 5,
+    "RuleIdList" : "360073894,360081682,360083108,370148673"
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360073894, "PolicyRisk", "The Sum Insured cannot be higher than 6.000", "PEI_SI_VALIDATION", 0, null, "/*def SI=PolicyRisk.SumInsured.val\ndef si=0\ndef ctlistsi=PolicyCoverages().SumInsured.val\nfor (j in ctlistsi ){\n  si+=j\n}\nPolicyRisk().SumInsured.update(si)\ndef SI=PolicyRisk().SumInsured.val*/\ndef MV=MarketValue.val\nif(MV>6000)\n{\n\n //return uwResult(\"The Sum Insured cannot be higher than 6.000\")\n //error(\"EBAO-PA-UW-B0001\")\n //info(\"EBAO-PA-UW-B0001\")\n //warn(\"EBAO-PA-UW-B0001\")\n  return uwResult(\"EBAO-PA-UW-B0001\") \n}", 17312387, 17312387, 5, 1559732028000, 1601229925000, null ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360081682, "Policy", "Policy Start date cannot less than current date", "V_EffDate", 1, null, "def currDate = new Date()\ndef effDate=EffectiveDate.val\njava.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat(\"yyyy-MM-dd\")\nString curr = sdf.format(currDate)\nString eff = sdf.format(effDate.toDate())\nif(eff.compareTo(curr)<0)\n{\n  //printIn(\"123\")\n  return uwResult(\"Policy Start date cannot less than current date\")\n}", 17312387, 17312387, 5, 1560426443000, 1566569793000, null ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360083108, "Policy", "Polcy End date cannot be higher than 1 year", "V_EndDate", 1, null, "def monthsBetween = getMonth(Policy().ExpiryDate.val)-getMonth(Policy().EffectiveDate.val) \ndef begYear = getYear(Policy().EffectiveDate.val) \ndef endYear = getYear(Policy().ExpiryDate.val) \ndef begDay = getDayOfMonth(Policy().EffectiveDate.val) \ndef endDay = getDayOfMonth(Policy().ExpiryDate.val) \nmonthsBetween= monthsBetween + (endYear - begYear) * 12 \nif (begDay <= endDay) {monthsBetween = monthsBetween+1} \nif (monthsBetween>12) \n{\nreturn uwResult(\"Polcy End date cannot be higher than 1 year\")\n}", 17312387, 17312387, 5, 1560435339000, 1566569786000, null ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 370148673, "PolicyRisk", "Premium Payment Condition via Credit Card", "PEIAutoAttach001", 1, null, "def Code=Policy().PolicyPaymentInfos()[0].PayModeCode.val\n//def Code=PolicyLob().PolicyRisk()[0].MarketValue.val\nprintln(Code.getClass().getName())\nif(Code.equals(\"30\")){\n // attachForm(PolicyLob().currentModel,\"F2201715\")\n  attachForm(PolicyRisk().currentModel,\"C101113\")\n  \n}\n", 17312387, 375425830, 5, 1564567782000, 1622217390000, null ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}
