@@ -1,0 +1,660 @@
+{
+  "ModuleList" : [ {
+    "DatasetList" : [ {
+      "BaseTableName" : "T_RT_CALC_VERSION",
+      "CriteriaList" : [ {
+        "Condition" : "VERSION_ID IN (:versionIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "versionIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "versionIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "VERSION_ID IN (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "versionIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "CALC_DEF_ID = {T_RT_CALC_VERSION.CALC_DEF_ID}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CALC_DEF_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RT_CALC_VERSION.CALC_DEF_ID}"
+          } ]
+        },
+        "TableName" : "T_RT_CALC_DEFINITION"
+      }, {
+        "Condition" : "RESOURCE_ID = {T_RT_CALC_VERSION.CALC_DEF_ID} AND RESOURCE_TYPE_ID = 4",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_ID = ? AND RESOURCE_TYPE_ID = 4",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RT_CALC_VERSION.CALC_DEF_ID}"
+          } ]
+        },
+        "TableName" : "T_PUB_RES_CTX_RELATION"
+      }, {
+        "Condition" : null,
+        "DatasetName" : null,
+        "IncludeList" : [ {
+          "Condition" : null,
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "CALC_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_RT_TERM_CALCULATION.CALC_ID"
+            } ]
+          },
+          "TableName" : "T_RT_TERM_CALCULATION_LINK"
+        }, {
+          "Condition" : null,
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "CALC_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_RT_TERM_CALCULATION.CALC_ID"
+            } ]
+          },
+          "TableName" : "T_RT_TERM_CALC_STEP"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "VERSION_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_RT_CALC_VERSION.VERSION_ID"
+          } ]
+        },
+        "TableName" : "T_RT_TERM_CALCULATION"
+      } ],
+      "SetName" : "RatingCalculationVersion"
+    }, {
+      "BaseTableName" : "T_RT_CALC_DEFINITION",
+      "CriteriaList" : [ {
+        "Condition" : "CALC_DEF_ID IN (:definitionIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "definitionIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "definitionIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CALC_DEF_ID IN (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "definitionIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "RESOURCE_ID = {T_RT_CALC_DEFINITION.CALC_DEF_ID} AND RESOURCE_TYPE_ID = 4",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_ID = ? AND RESOURCE_TYPE_ID = 4",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RT_CALC_DEFINITION.CALC_DEF_ID}"
+          } ]
+        },
+        "TableName" : "T_PUB_RES_CTX_RELATION"
+      }, {
+        "Condition" : null,
+        "DatasetName" : null,
+        "IncludeList" : [ {
+          "Condition" : null,
+          "DatasetName" : null,
+          "IncludeList" : [ {
+            "Condition" : null,
+            "DatasetName" : null,
+            "PreprocessCondition_" : {
+              "ConditionWithParams" : "CALC_ID = ?",
+              "ParamList" : [ {
+                "DataType" : "LONG",
+                "ParamName" : "T_RT_TERM_CALCULATION.CALC_ID"
+              } ]
+            },
+            "TableName" : "T_RT_TERM_CALCULATION_LINK"
+          }, {
+            "Condition" : null,
+            "DatasetName" : null,
+            "PreprocessCondition_" : {
+              "ConditionWithParams" : "CALC_ID = ?",
+              "ParamList" : [ {
+                "DataType" : "LONG",
+                "ParamName" : "T_RT_TERM_CALCULATION.CALC_ID"
+              } ]
+            },
+            "TableName" : "T_RT_TERM_CALC_STEP"
+          } ],
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "VERSION_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_RT_CALC_VERSION.VERSION_ID"
+            } ]
+          },
+          "TableName" : "T_RT_TERM_CALCULATION"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CALC_DEF_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_RT_CALC_DEFINITION.CALC_DEF_ID"
+          } ]
+        },
+        "TableName" : "T_RT_CALC_VERSION"
+      } ],
+      "SetName" : "RatingCalculationDefinition"
+    } ],
+    "Description" : null,
+    "ModuleName" : "rating",
+    "TableList" : [ {
+      "ColumnList" : [ {
+        "ColumnName" : "CALC_DEF_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RELEASE_DATE_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VERSION_DATE_FIELD",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_DEF_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_CALC_DEFINITION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "VERSION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CALC_DEF_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "VERSION_NO",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "VERSION_DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "START_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "END_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "STATUS",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "RELEASE_DATE",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "VERSION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_DEF_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CALC_DEF_ID",
+        "ReferencingTableName" : "T_RT_CALC_DEFINITION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "VERSION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_CALC_VERSION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "TERM_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TERM_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_TERM_DEFINITION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "CALC_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MODEL_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FILTER_EXPRESSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ACCUMULATION",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "FORK",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "BE_DEPENDENT_CALC_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DEPENDENT_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VERSION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TERM_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INJECTED_GROUP",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "REFERENCE_ACCUMULATION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "INJECTED_CALC",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "TERM_NAME",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "VERSION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "VERSION_ID",
+        "ReferencingTableName" : "T_RT_CALC_VERSION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "BE_DEPENDENT_CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CALC_ID",
+        "ReferencingTableName" : "T_RT_TERM_CALCULATION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TERM_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "TERM_ID",
+        "ReferencingTableName" : "T_RT_TERM_DEFINITION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_TERM_CALCULATION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "STEP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CALC_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SEQUENCE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "TERM_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CONTENT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "TERM_NAME",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "STEP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CALC_ID",
+        "ReferencingTableName" : "T_RT_TERM_CALCULATION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TERM_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "TERM_ID",
+        "ReferencingTableName" : "T_RT_TERM_DEFINITION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "STEP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_TERM_CALC_STEP"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "LINK_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CALC_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "LINKED_CALC_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "LINK_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CALC_ID",
+        "ReferencingTableName" : "T_RT_TERM_CALCULATION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "LINKED_CALC_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CALC_ID",
+        "ReferencingTableName" : "T_RT_TERM_CALCULATION"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "LINK_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RT_TERM_CALCULATION_LINK"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RES_CTX_RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CONTEXT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_RES_CTX_RELATION"
+    } ]
+  } ],
+  "Preprocessed_" : true,
+  "TableDependencyMap_" : {
+    "T_RT_CALC_VERSION" : {
+      "T_RT_TERM_CALCULATION" : [ "VERSION_ID" ]
+    },
+    "T_RT_CALC_DEFINITION" : {
+      "T_RT_CALC_VERSION" : [ "CALC_DEF_ID" ]
+    },
+    "T_RT_TERM_CALCULATION" : {
+      "T_RT_TERM_CALCULATION_LINK" : [ "CALC_ID", "LINKED_CALC_ID" ],
+      "T_RT_TERM_CALC_STEP" : [ "CALC_ID" ],
+      "T_RT_TERM_CALCULATION" : [ "BE_DEPENDENT_CALC_ID" ]
+    },
+    "T_RT_TERM_DEFINITION" : {
+      "T_RT_TERM_CALC_STEP" : [ "TERM_ID" ],
+      "T_RT_TERM_CALCULATION" : [ "TERM_ID" ]
+    }
+  }
+}

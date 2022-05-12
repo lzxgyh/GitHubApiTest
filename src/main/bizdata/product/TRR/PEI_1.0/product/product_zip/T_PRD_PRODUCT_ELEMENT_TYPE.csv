@@ -1,0 +1,9 @@
+DATA_ACTION_,IS_REFERENCED,ELEMENT_TYPE_ID,NAME,DESCRIPTION,INSERT_BY,UPDATE_BY,RECORD_USAGE,INSERT_TIME,UPDATE_TIME
+Unknown,true,-15,Field,Field,-11,-11,1,2019-03-27 14:45:40.0,2019-03-27 14:45:40.0
+Unknown,true,-14,Benefit,Benefit,-11,-11,1,2019-03-27 14:45:20.0,2019-03-27 14:45:20.0
+Unknown,true,-11,LimitDeductible,LimitDeductible,-11,-11,1,2017-09-07 16:45:25.0,2017-09-07 16:45:25.0
+Unknown,true,-10,Product,Product,-11,-11,1,2015-09-23 09:23:13.0,2015-09-23 09:23:13.0
+Unknown,true,-8,SubProduct,Sub Product,-11,-11,1,2015-09-23 09:23:13.0,2015-09-23 09:23:13.0
+Unknown,true,-3,Form,Form/Clause,-11,-11,1,2015-09-22 14:49:08.0,2015-09-22 14:49:08.0
+Unknown,true,-2,Risk,"Vehicle, Location, Building, and etc.",-11,-11,1,2015-09-22 14:49:08.0,2015-09-22 14:49:08.0
+Unknown,true,-1,Coverage,"Coverage, Sub Coverage, Coverage Group, Coverage Template",-11,-11,1,2015-09-22 14:49:08.0,2015-09-22 14:49:08.0
