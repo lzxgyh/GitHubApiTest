@@ -1,0 +1,49 @@
+DATA_ACTION_,IS_REFERENCED,RULE_ID,RULE_LEVEL,DESCRIPTION,NAME,STATUS,APPLICABLE_CONDITION,CONTENT,INSERT_BY,UPDATE_BY,RECORD_USAGE,INSERT_TIME,UPDATE_TIME,RULE_OBJECT_CODE
+Unknown,false,360073894,PolicyRisk,The Sum Insured cannot be higher than 6.000,PEI_SI_VALIDATION,0,,"/*def SI=PolicyRisk.SumInsured.val
+def si=0
+def ctlistsi=PolicyCoverages().SumInsured.val
+for (j in ctlistsi ){
+  si+=j
+}
+PolicyRisk().SumInsured.update(si)
+def SI=PolicyRisk().SumInsured.val*/
+def MV=MarketValue.val
+if(MV>6000)
+{
+
+ //return uwResult(""The Sum Insured cannot be higher than 6.000"")
+ //error(""EBAO-PA-UW-B0001"")
+ //info(""EBAO-PA-UW-B0001"")
+ //warn(""EBAO-PA-UW-B0001"")
+  return uwResult(""EBAO-PA-UW-B0001"") 
+}",17312387,17312387,5,2019-06-05 10:53:48.0,2020-09-27 18:05:25.0,
+Unknown,false,360081682,Policy,Policy Start date cannot less than current date,V_EffDate,1,,"def currDate = new Date()
+def effDate=EffectiveDate.val
+java.text.SimpleDateFormat sdf=new java.text.SimpleDateFormat(""yyyy-MM-dd"")
+String curr = sdf.format(currDate)
+String eff = sdf.format(effDate.toDate())
+if(eff.compareTo(curr)<0)
+{
+  //printIn(""123"")
+  return uwResult(""Policy Start date cannot less than current date"")
+}",17312387,17312387,5,2019-06-13 11:47:23.0,2019-08-23 14:16:33.0,
+Unknown,false,360083108,Policy,Polcy End date cannot be higher than 1 year,V_EndDate,1,,"def monthsBetween = getMonth(Policy().ExpiryDate.val)-getMonth(Policy().EffectiveDate.val) 
+def begYear = getYear(Policy().EffectiveDate.val) 
+def endYear = getYear(Policy().ExpiryDate.val) 
+def begDay = getDayOfMonth(Policy().EffectiveDate.val) 
+def endDay = getDayOfMonth(Policy().ExpiryDate.val) 
+monthsBetween= monthsBetween + (endYear - begYear) * 12 
+if (begDay <= endDay) {monthsBetween = monthsBetween+1} 
+if (monthsBetween>12) 
+{
+return uwResult(""Polcy End date cannot be higher than 1 year"")
+}",17312387,17312387,5,2019-06-13 14:15:39.0,2019-08-23 14:16:26.0,
+Unknown,false,370148673,PolicyRisk,Premium Payment Condition via Credit Card,PEIAutoAttach001,1,,"def Code=Policy().PolicyPaymentInfos()[0].PayModeCode.val
+//def Code=PolicyLob().PolicyRisk()[0].MarketValue.val
+println(Code.getClass().getName())
+if(Code.equals(""30"")){
+ // attachForm(PolicyLob().currentModel,""F2201715"")
+  attachForm(PolicyRisk().currentModel,""C101113"")
+  
+}
+",17312387,375425830,5,2019-07-31 10:09:42.0,2021-05-28 15:56:30.0,

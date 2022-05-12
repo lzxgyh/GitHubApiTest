@@ -1,0 +1,664 @@
+{
+  "ModuleList" : [ {
+    "DatasetList" : [ {
+      "BaseTableName" : "T_DD_BUSI_OBJECT",
+      "CriteriaList" : [ {
+        "Condition" : "code = :objectCode",
+        "CriteriaName" : "objectCodeCriteria",
+        "ParameterList" : [ {
+          "DataType" : "STRING",
+          "ParamName" : "objectCode"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "code = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "objectCode"
+          } ]
+        }
+      } ],
+      "Description" : "",
+      "IncludeList" : [ {
+        "Condition" : null,
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "OBJECT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_DD_BUSI_OBJECT.OBJECT_ID"
+          } ]
+        },
+        "TableName" : "T_DD_BUSI_FIELD_BINDING"
+      }, {
+        "Condition" : null,
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "OBJECT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_DD_BUSI_OBJECT.OBJECT_ID"
+          } ]
+        },
+        "TableName" : "T_DD_BUSI_OBJECT_RELATION"
+      } ],
+      "SetName" : "T_DD_BUSI_OBJECT"
+    }, {
+      "BaseTableName" : "T_DD_BUSI_CONTEXT",
+      "CriteriaList" : [ {
+        "Condition" : "CONTEXT_ID = :contextId AND CONTEXT_TYPE=-2",
+        "CriteriaName" : "contextId",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "contextId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CONTEXT_ID = ? AND CONTEXT_TYPE=-2",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "contextId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : null,
+        "DatasetName" : "T_DD_BUSI_OBJECT",
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "CONTEXT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_DD_BUSI_CONTEXT.CONTEXT_ID"
+          } ]
+        },
+        "TableName" : null
+      } ],
+      "SetName" : "BizObjectByContextId"
+    } ],
+    "Description" : null,
+    "ModuleName" : "product_dd",
+    "TableList" : [ {
+      "ColumnList" : [ {
+        "ColumnName" : "CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CONTEXT_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "REFERENCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "CONTEXT_PARAMS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VERSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "DESCRIPTION_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION_ZH",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_CONTEXT"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "LABEL_",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ALIAS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "IS_ACORD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ACORD_FIELD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ACORD_PATH",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MAX_LENGTH",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "LABEL_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "LABEL_ZH",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION_ZH",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_FIELD"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "BINDING_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TAG_IDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_FIXED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_MASKED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_ENCRYPTED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PROPERTY_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE_TABLE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "IS_INPUT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "IS_FORMULA",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FORMULA_TEXT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "SCOPE_IDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "HELP_TEXT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_TECHNICAL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DEFAULT_VALUE_RULE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MIN_LENGTH",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MAX_LENGTH",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MIN_VALUE",
+        "DataType" : "BIGDECIMAL"
+      }, {
+        "ColumnName" : "MAX_VALUE",
+        "DataType" : "BIGDECIMAL"
+      }, {
+        "ColumnName" : "PRECISION",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "FIELD_LABEL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_MANDATORY",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DEFAULT_VALUE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_SCALE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "FIELD_COMMENTS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CONDITION_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VALUE_LIST",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VALUE_OPTIONS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_TEMP",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_DEPRECATED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_LABEL_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_LABEL_ZH",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_COMMENTS_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_COMMENTS_ZH",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "HELP_TEXT_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "HELP_TEXT_ZH",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_INDEXED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_UNIQUE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "SAMPLE_VALUE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CODE_TABLE_NAME",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "BINDING_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "FIELD_NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "NAME",
+        "ReferencingTableName" : "T_DD_BUSI_FIELD"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "OBJECT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "OBJECT_ID",
+        "ReferencingTableName" : "T_DD_BUSI_OBJECT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "BINDING_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_FIELD_BINDING"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "SCOPE_IDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_MODEL"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_ABSTRACT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CLASS_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SUPER_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "OBJECT_REFERENCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "DELETE_WHEN_NO_LINKED_CHILD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "SCOPE_IDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_DYNAMIC",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DYNAMIC_OBJECT_RESOLVER_BEAN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_KEY",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "EXTENDS_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MODEL_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "EXTERNAL_CLASS_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "TENANT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION_EN",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION_ZH",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "OBJECT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "MODEL_NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "NAME",
+        "ReferencingTableName" : "T_DD_BUSI_MODEL"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "CONTEXT_ID",
+        "ReferencingTableName" : "T_DD_BUSI_CONTEXT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "OBJECT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_OBJECT"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PARENT_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RELATION_TYPE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "IS_AUTO_GENERATE_CHILD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "MIN_OCCURRENCE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MAX_OCCURRENCE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MIN_OCCURRENCE_EXPRESSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MAX_OCCURRENCE_EXPRESSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MODEL_RELATION_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "OBJECT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "OBJECT_ID",
+        "ReferencingTableName" : "T_DD_BUSI_OBJECT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PARENT_OBJECT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "OBJECT_ID",
+        "ReferencingTableName" : "T_DD_BUSI_OBJECT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_DD_BUSI_OBJECT_RELATION"
+    } ]
+  } ],
+  "Preprocessed_" : true,
+  "TableDependencyMap_" : {
+    "T_DD_BUSI_MODEL" : {
+      "T_DD_BUSI_OBJECT" : [ "MODEL_NAME" ]
+    },
+    "T_DD_BUSI_FIELD" : {
+      "T_DD_BUSI_FIELD_BINDING" : [ "FIELD_NAME" ]
+    },
+    "T_DD_BUSI_CONTEXT" : {
+      "T_DD_BUSI_OBJECT" : [ "CONTEXT_ID" ]
+    },
+    "T_DD_BUSI_OBJECT" : {
+      "T_DD_BUSI_FIELD_BINDING" : [ "OBJECT_ID" ],
+      "T_DD_BUSI_OBJECT_RELATION" : [ "OBJECT_ID", "PARENT_OBJECT_ID" ]
+    }
+  }
+}

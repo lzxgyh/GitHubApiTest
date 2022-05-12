@@ -1,0 +1,1248 @@
+{
+  "ModuleList" : [ {
+    "DatasetList" : [ {
+      "BaseTableName" : "T_PRD_PRODUCT",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_ID = :productId",
+        "CriteriaName" : "productId",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "productId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "productId"
+          } ]
+        }
+      } ],
+      "Description" : "",
+      "IncludeList" : [ {
+        "Condition" : "PRODUCT_MASTER_ID = {T_PRD_PRODUCT.PRODUCT_MASTER_ID}",
+        "DatasetName" : null,
+        "IncludeList" : [ {
+          "Condition" : "PRODUCT_LINE_ID = {T_PRD_PRODUCT_MASTER.PRODUCT_LINE}",
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "PRODUCT_LINE_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "STRING",
+              "ParamName" : "{T_PRD_PRODUCT_MASTER.PRODUCT_LINE}"
+            } ]
+          },
+          "TableName" : "T_PRD_PRODUCT_LINE"
+        }, {
+          "Condition" : "RISK_UNIT_LEVEL = {T_PRD_PRODUCT_MASTER.RISK_UNIT_LEVEL}",
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "RISK_UNIT_LEVEL = ?",
+            "ParamList" : [ {
+              "DataType" : "STRING",
+              "ParamName" : "{T_PRD_PRODUCT_MASTER.RISK_UNIT_LEVEL}"
+            } ]
+          },
+          "TableName" : "T_PRD_RI_RISK_UNIT_LEVEL"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_MASTER_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_PRD_PRODUCT.PRODUCT_MASTER_ID}"
+          } ]
+        },
+        "TableName" : "T_PRD_PRODUCT_MASTER"
+      }, {
+        "Condition" : null,
+        "DatasetName" : null,
+        "IncludeList" : [ {
+          "Condition" : null,
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "PRODUCT_ELEMENT_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_PRD_PRODUCT_ELEMENT.PRODUCT_ELEMENT_ID"
+            } ]
+          },
+          "TableName" : "T_PRD_PRODUCT_ELEM_HIERARCHY"
+        }, {
+          "Condition" : null,
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "SOURCE_ELEMENT_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_PRD_PRODUCT_ELEMENT.PRODUCT_ELEMENT_ID"
+            } ]
+          },
+          "TableName" : "T_PRD_PRODUCT_ELEMENT_RELATION"
+        }, {
+          "Condition" : "ELEMENT_TYPE_ID = {T_PRD_PRODUCT_ELEMENT.ELEMENT_TYPE_ID}",
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "ELEMENT_TYPE_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "STRING",
+              "ParamName" : "{T_PRD_PRODUCT_ELEMENT.ELEMENT_TYPE_ID}"
+            } ]
+          },
+          "TableName" : "T_PRD_PRODUCT_ELEMENT_TYPE"
+        }, {
+          "Condition" : "INSURED_CATEGORY = {T_PRD_PRODUCT_ELEMENT.INSURED_CATEGORY}",
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "INSURED_CATEGORY = ?",
+            "ParamList" : [ {
+              "DataType" : "STRING",
+              "ParamName" : "{T_PRD_PRODUCT_ELEMENT.INSURED_CATEGORY}"
+            } ]
+          },
+          "TableName" : "T_PRD_INSURED_CATEGORY"
+        }, {
+          "Condition" : null,
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "PRODUCT_ELEMENT_ID = ?",
+            "ParamList" : [ {
+              "DataType" : "LONG",
+              "ParamName" : "T_PRD_PRODUCT_ELEMENT.PRODUCT_ELEMENT_ID"
+            } ]
+          },
+          "TableName" : "T_PRD_PRODUCT_SYNC_RELATION"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_PRD_PRODUCT.PRODUCT_ID"
+          } ]
+        },
+        "TableName" : "T_PRD_PRODUCT_ELEMENT"
+      } ],
+      "SetName" : "PDProduct"
+    }, {
+      "BaseTableName" : "T_PRD_PRODUCT_MASTER",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_MASTER_ID = :masterId",
+        "CriteriaName" : "masterId",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "masterId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_MASTER_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "masterId"
+          } ]
+        }
+      } ],
+      "Description" : "",
+      "IncludeList" : [ {
+        "Condition" : "PRODUCT_LINE_ID = {T_PRD_PRODUCT_MASTER.PRODUCT_LINE}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_LINE_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_PRD_PRODUCT_MASTER.PRODUCT_LINE}"
+          } ]
+        },
+        "TableName" : "T_PRD_PRODUCT_LINE"
+      }, {
+        "Condition" : "RISK_UNIT_LEVEL = {T_PRD_PRODUCT_MASTER.RISK_UNIT_LEVEL}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RISK_UNIT_LEVEL = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_PRD_PRODUCT_MASTER.RISK_UNIT_LEVEL}"
+          } ]
+        },
+        "TableName" : "T_PRD_RI_RISK_UNIT_LEVEL"
+      } ],
+      "SetName" : "ProductMaster"
+    }, {
+      "BaseTableName" : "T_PRD_CONTENT_TEMPLATE",
+      "CriteriaList" : [ {
+        "Condition" : "TEMPLATE_ID IN (:TEMPLATE_ID_LIST)",
+        "CriteriaName" : "TEMPLATE_ID_LIST",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "TEMPLATE_ID_LIST"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "TEMPLATE_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "TEMPLATE_ID_LIST"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "ContentTemplate"
+    }, {
+      "BaseTableName" : "T_PRD_CONTENT_TEMPLATE",
+      "CriteriaList" : [ {
+        "Condition" : "GROUP_ID=:GROUP_ID",
+        "CriteriaName" : "GROUP_ID",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "GROUP_ID"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "GROUP_ID=?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "GROUP_ID"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "ContentTemplateByGroup"
+    }, {
+      "BaseTableName" : "T_PRD_PRODUCT_UPLOAD_RECORD",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_ELEMENT_ID = :FORM_ID AND PRODUCT_ID IS NULL",
+        "CriteriaName" : "PRODUCT_ELEMENT_ID",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "FORM_ID"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ELEMENT_ID = ? AND PRODUCT_ID IS NULL",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "FORM_ID"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "UploadRecordsByFormId"
+    }, {
+      "BaseTableName" : "T_PRD_PRODUCT_UPLOAD_RECORD",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_ELEMENT_CODE IN (:ELEMENT_CODE_LIST)",
+        "CriteriaName" : "ELEMENT_CODE_LIST",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "ELEMENT_CODE_LIST"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ELEMENT_CODE IN (?)",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "ELEMENT_CODE_LIST"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "UploadRecordsByElementCodeList"
+    }, {
+      "BaseTableName" : "T_PRD_PRODUCT_UPLOAD_RECORD",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_ID = :PRODUCT_ID",
+        "CriteriaName" : "PRODUCT_ID",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "PRODUCT_ID"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "PRODUCT_ID"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "UploadRecordsByProductId"
+    }, {
+      "BaseTableName" : "T_PRD_PRODUCT_UPLOAD_RECORD",
+      "CriteriaList" : [ {
+        "Condition" : "PRODUCT_ID IS NULL AND PRODUCT_ELEMENT_CODE LIKE :PREFIX || '%'",
+        "CriteriaName" : "ELEMENT_CODE_PREFIX",
+        "ParameterList" : [ {
+          "DataType" : "STRING",
+          "ParamName" : "PREFIX"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "PRODUCT_ID IS NULL AND PRODUCT_ELEMENT_CODE LIKE ? || '%'",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "PREFIX"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "UploadRecordsByFormType"
+    } ],
+    "Description" : null,
+    "ModuleName" : "product",
+    "TableList" : [ {
+      "ColumnList" : [ {
+        "ColumnName" : "PRODUCT_MASTER_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "FROM_PRODUCT_MASTER_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_LINE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "STANDARD_LOB",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "IS_PACKAGE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CREATING_ORG_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "RISK_UNIT_LEVEL",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INCLUDE_PRODUCT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "POLICY_TYPE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "BUSINESS_LINE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SECOND_LINE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "THIRD_LINE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "FOURTH_LINE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "FINANCE_LINE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTAINER_CATEGORY",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_MASTER_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_LINE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_LINE_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_LINE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_TYPE_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_TYPE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RISK_UNIT_LEVEL",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RISK_UNIT_LEVEL",
+        "ReferencingTableName" : "T_PRD_RI_RISK_UNIT_LEVEL"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_MASTER_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_MASTER"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "START_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "END_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "BUSINESS_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_MASTER_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_VERSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "VERSION_DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "COINSURANCE_INDICATOR",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "MASTER_POLICY_INDICATOR",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "FROM_PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "IS_RELEASED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "POLICY_GROUP_TYPE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RISK_UNIT_LEVEL",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "POLICY_WORK_PROCESS",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "BRANCH_IDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CASH_BEFORE_COVER",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PLAN_LEVEL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_COVERAGE_TEMPLATE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_SHARE_CTGROUP",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CHOOSE_MODEL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_INSURED_GROUP",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_MASTER_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_MASTER_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_MASTER"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RISK_UNIT_LEVEL",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RISK_UNIT_LEVEL",
+        "ReferencingTableName" : "T_PRD_RI_RISK_UNIT_LEVEL"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "PRODUCT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "PRODUCT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "EFFECTIVE_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "EXPIRE_DATE",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "IS_TEMPLATE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_GROUP",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ELEMENT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SYSTEM_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ENGLISH_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "EFFECTIVE_FLAG",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_REQUIRED",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "AVALABILITY_RULE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "DEFINITION_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DEFINITION_SUPER_OBJECT_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "POLICY_TYPE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "INSURED_CATEGORY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "EXTENDS_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "BUSINESS_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTENT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "ENGLISH_CONTENT",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "ELEMENT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "ELEMENT_TYPE_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT_TYPE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "INSURED_CATEGORY",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "INSURED_CATEGORY",
+        "ReferencingTableName" : "T_PRD_INSURED_CATEGORY"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_ELEMENT"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "ELEMENT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "ELEMENT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "ELEMENT_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_ELEMENT_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PARENT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RELATION_TYPE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "MIN_OCCURRENCE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MAX_OCCURRENCE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "MIN_OCCURRENCE_EXPRESSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MAX_OCCURRENCE_EXPRESSION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IS_AUTO_GENERATE_CHILD",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PARENT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_ELEM_HIERARCHY"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "ELEMENT_RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TARGET_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SOURCE_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RELATION_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "BUSINESS_OBJECT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "SOURCE_PARENT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TARGET_PARENT_ELEMENT_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "ELEMENT_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "SOURCE_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TARGET_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "SOURCE_PARENT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TARGET_PARENT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "ELEMENT_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_ELEMENT_RELATION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TARGET_PRODUCT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_ELEMENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "PRODUCT_ELEMENT_ID",
+        "ReferencingTableName" : "T_PRD_PRODUCT_ELEMENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_SYNC_RELATION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "PRODUCT_LINE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "MAPPING_LOB_DEFINITION_OBJECT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DISPLAYSEQUENCE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSINESS_LINE",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_LINE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "PRODUCT_LINE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_LINE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RISK_UNIT_LEVEL",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "LEVEL_NAME",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RISK_UNIT_LEVEL",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RISK_UNIT_LEVEL",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_RI_RISK_UNIT_LEVEL"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "INSURED_CATEGORY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CATEGORY_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "IMPL_CLASS",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "UID_FORMULA",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "INSURED_CATEGORY",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "INSURED_CATEGORY",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_INSURED_CATEGORY"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "TEMPLATE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "TEMPLATE_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "TEMPLATE_CONTENT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "TEMPLATE_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "TEMPLATE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "TEMPLATE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_CONTENT_TEMPLATE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DOCUMENT_TYPE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DOCUMENT_REMARK",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DOCUMENT_NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DOCUMENT_URL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DOCUMENT_USE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "PRODUCT_ELEMENT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "PRODUCT_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PRD_PRODUCT_UPLOAD_RECORD"
+    } ]
+  } ],
+  "Preprocessed_" : true,
+  "TableDependencyMap_" : {
+    "T_PRD_INSURED_CATEGORY" : {
+      "T_PRD_PRODUCT_ELEMENT" : [ "INSURED_CATEGORY" ]
+    },
+    "T_PRD_PRODUCT_ELEMENT_TYPE" : {
+      "T_PRD_PRODUCT_ELEMENT" : [ "ELEMENT_TYPE_ID" ]
+    },
+    "T_PRD_RI_RISK_UNIT_LEVEL" : {
+      "T_PRD_PRODUCT" : [ "RISK_UNIT_LEVEL" ],
+      "T_PRD_PRODUCT_MASTER" : [ "RISK_UNIT_LEVEL" ]
+    },
+    "T_PRD_PRODUCT" : {
+      "T_PRD_PRODUCT_ELEMENT" : [ "PRODUCT_ID" ],
+      "T_PRD_PRODUCT_ELEMENT_RELATION" : [ "PRODUCT_ID" ]
+    },
+    "T_PRD_PRODUCT_LINE" : {
+      "T_PRD_PRODUCT_MASTER" : [ "PRODUCT_LINE" ]
+    },
+    "T_PRD_PRODUCT_ELEMENT" : {
+      "T_PRD_PRODUCT_ELEM_HIERARCHY" : [ "PRODUCT_ELEMENT_ID", "PARENT_ELEMENT_ID" ],
+      "T_PRD_PRODUCT_SYNC_RELATION" : [ "PRODUCT_ELEMENT_ID" ],
+      "T_PRD_PRODUCT_ELEMENT_RELATION" : [ "SOURCE_ELEMENT_ID", "TARGET_ELEMENT_ID", "SOURCE_PARENT_ELEMENT_ID", "TARGET_PARENT_ELEMENT_ID" ]
+    },
+    "T_PRD_PRODUCT_TYPE" : {
+      "T_PRD_PRODUCT_MASTER" : [ "PRODUCT_TYPE_ID" ]
+    },
+    "T_PRD_PRODUCT_MASTER" : {
+      "T_PRD_PRODUCT" : [ "PRODUCT_MASTER_ID" ]
+    }
+  }
+}

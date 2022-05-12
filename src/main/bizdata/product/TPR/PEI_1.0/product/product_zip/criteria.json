@@ -1,0 +1,14 @@
+{
+  "Criteria" : "productId",
+  "Dataset" : "PDProduct",
+  "ParamMap" : {
+    "productId" : 360010458,
+    "recordUsage" : 5
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 959990400000, 4102358400000, "PEI", 360010457, "1.0", null, null, null, 360010431, "N", 17312387, 375425830, 360010458, null, 1, 1559580665000, 1637233008000, null, "260059521301612", null, null, null, "N", null, "N" ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}
