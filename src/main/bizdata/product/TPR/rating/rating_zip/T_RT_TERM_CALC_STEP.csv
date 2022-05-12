@@ -1,0 +1,24 @@
+DATA_ACTION_,IS_REFERENCED,STEP_ID,CALC_ID,SEQUENCE,NAME,DESCRIPTION,TERM_ID,INSERT_BY,UPDATE_BY,RECORD_USAGE,INSERT_TIME,UPDATE_TIME,CONTENT,TERM_NAME
+Unknown,false,373600920,373600913,0,Premium,,348462,17312387,17312387,5,2020-04-28 15:56:27.0,2020-04-28 17:04:41.0,"def marletValue = PolicyRisk().MarketValue.val
+if(marletValue == null){
+  error(""PolicyRisk().MarketValue is mandatory, Please Input it."")
+}
+
+def coverCode = ProductElementCode.val
+def rate = lookup(""PGA_Premium_SI"",[""CoverCode"":coverCode,""MarketValue"":marletValue]).PremiumRate
+
+println(marletValue* rate)
+return  (marletValue* rate).round(context[""Cover_Round""])
+",GrossPremium
+Unknown,false,373601040,373600913,1,SI,,6681028,17312387,17312387,5,2020-04-28 16:39:34.0,2020-04-28 16:56:50.0,"def marletValue = PolicyRisk().MarketValue.val
+def coverCode = ProductElementCode.val
+def rate = lookup(""PGA_Premium_SI"",[""CoverCode"":coverCode,""MarketValue"":marletValue]).SIRate
+
+return  (marletValue* rate).round(context[""Cover_Round""])",SumInsured
+Unknown,false,373601045,373600913,3,BeforeVatPremium,,300337886,17312387,17312387,5,2020-04-28 16:44:03.0,2020-04-28 16:56:58.0,return GrossPremium.val,BeforeVatPremium
+Unknown,false,373601048,373600913,4,Vat,,370530280,17312387,17312387,5,2020-04-28 16:44:48.0,2020-04-28 17:09:33.0,"def coverCode = ProductElementCode.val
+def rate=lookup(""PGA_Coverage_VatRate"",[""CoverCode"":coverCode]).VatRate
+VatRate.update(rate)
+
+return (BeforeVatPremium.val * rate).round(context[""Cover_Round""])",Vat
+Unknown,false,373601078,373600913,5,DuePremium,,20008827,17312387,17312387,5,2020-04-28 16:58:00.0,2020-04-28 17:09:42.0,"return (BeforeVatPremium.val + Vat.val).round(context[""Cover_Round""])",DuePremium

@@ -1,0 +1,29 @@
+{
+  "Criteria" : "relationIds",
+  "Dataset" : "PubContextByRelationIds",
+  "ParamMap" : {
+    "relationIds" : "360083110,360081684,370148675,373584336,360073896"
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360073896, 360010457, 360073894, 17312387, 17312387, 5, 1559732028000, 1559732028000, 2, 5 ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360081684, 360010457, 360081682, 17312387, 17312387, 5, 1560426443000, 1560426443000, 2, 5 ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360083110, 360010457, 360083108, 17312387, 17312387, 5, 1560435339000, 1560435339000, 2, 5 ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 370148675, 360010457, 370148673, 17312387, 17312387, 5, 1564567782000, 1564567782000, 2, 5 ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 373584336, 360010457, 360010849, 17312387, 17312387, 5, 1587635969000, 1587635969000, 2, 4 ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}
