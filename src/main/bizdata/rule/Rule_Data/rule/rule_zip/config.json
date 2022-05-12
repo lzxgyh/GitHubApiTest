@@ -1,0 +1,1211 @@
+{
+  "ModuleList" : [ {
+    "DatasetList" : [ {
+      "BaseTableName" : "T_RM_RULE",
+      "CriteriaList" : [ {
+        "Condition" : "RULE_ID IN (:RuleIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "RuleIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "RuleIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RULE_ID IN (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "RuleIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "RESOURCE_ID = {T_RM_RULE.RULE_ID} AND RESOURCE_TYPE_ID = 5",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RESOURCE_ID = ? AND RESOURCE_TYPE_ID = 5",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_RULE.RULE_ID}"
+          } ]
+        },
+        "TableName" : "T_PUB_RES_CTX_RELATION"
+      }, {
+        "Condition" : null,
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RULE_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_RM_RULE.RULE_ID"
+          } ]
+        },
+        "TableName" : "T_RM_GROUP_RULE_MAPPING"
+      } ],
+      "SetName" : "Rule"
+    }, {
+      "BaseTableName" : "T_RM_VALIDATION_RULE",
+      "CriteriaList" : [ {
+        "Condition" : "RULE_ID IN (:RULE_ID_LIST) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "RULE_ID_LIST",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "RULE_ID_LIST"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RULE_ID IN (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "RULE_ID_LIST"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : null,
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "VALIDATION_RULE_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_RM_VALIDATION_RULE.RULE_ID"
+          } ]
+        },
+        "TableName" : "T_RM_VLD_GRP_RULE_MAPPING"
+      } ],
+      "SetName" : "ValidationRule"
+    }, {
+      "BaseTableName" : "T_RM_VALIDATION_RULE",
+      "CriteriaList" : [ {
+        "Condition" : "BUSI_CONTEXT_ID = :busiContextId",
+        "CriteriaName" : "busiContextId",
+        "ParameterList" : [ {
+          "DataType" : "LONG",
+          "ParamName" : "busiContextId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "BUSI_CONTEXT_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "busiContextId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : null,
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "VALIDATION_RULE_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "LONG",
+            "ParamName" : "T_RM_VALIDATION_RULE.RULE_ID"
+          } ]
+        },
+        "TableName" : "T_RM_VLD_GRP_RULE_MAPPING"
+      } ],
+      "SetName" : "ValidationRuleByDDContext"
+    }, {
+      "BaseTableName" : "T_RM_VLD_GRP_RULE_MAPPING",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID = :groupId\n                    and EXISTS (SELECT 1 FROM T_RM_VALIDATION_RULE R where R.RULE_ID = VALIDATION_RULE_ID\n                    and R.BUSI_CONTEXT_ID = -1)\n                ",
+        "CriteriaName" : "groupIdAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "groupId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID = ?\n                    and EXISTS (SELECT 1 FROM T_RM_VALIDATION_RULE R where R.RULE_ID = VALIDATION_RULE_ID\n                    and R.BUSI_CONTEXT_ID = -1)\n                ",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "groupId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "RULE_ID = {T_RM_VLD_GRP_RULE_MAPPING.VALIDATION_RULE_ID} and RECORD_USAGE = {T_RM_VLD_GRP_RULE_MAPPING.RECORD_USAGE}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RULE_ID = ? and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_VLD_GRP_RULE_MAPPING.VALIDATION_RULE_ID}"
+          }, {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_VLD_GRP_RULE_MAPPING.RECORD_USAGE}"
+          } ]
+        },
+        "TableName" : "T_RM_VALIDATION_RULE"
+      } ],
+      "SetName" : "ValidationRuleByGroupAndRecordUsage"
+    }, {
+      "BaseTableName" : "T_RM_GROUP_RULE_MAPPING",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID = :groupId\n                    and NOT EXISTS (SELECT 1 FROM T_PUB_RES_CTX_RELATION R\n                    where R.RESOURCE_ID = RULE_ID and R.RESOURCE_TYPE_ID = 5 and R.CONTEXT_ID <> -1)\n                ",
+        "CriteriaName" : "groupIdAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "groupId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID = ?\n                    and NOT EXISTS (SELECT 1 FROM T_PUB_RES_CTX_RELATION R\n                    where R.RESOURCE_ID = RULE_ID and R.RESOURCE_TYPE_ID = 5 and R.CONTEXT_ID <> -1)\n                ",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "groupId"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "RULE_ID = {T_RM_GROUP_RULE_MAPPING.RULE_ID} and RECORD_USAGE = {T_RM_GROUP_RULE_MAPPING.RECORD_USAGE}",
+        "DatasetName" : null,
+        "IncludeList" : [ {
+          "Condition" : "RESOURCE_ID = {T_RM_RULE.RULE_ID} AND RESOURCE_TYPE_ID = 5",
+          "DatasetName" : null,
+          "PreprocessCondition_" : {
+            "ConditionWithParams" : "RESOURCE_ID = ? AND RESOURCE_TYPE_ID = 5",
+            "ParamList" : [ {
+              "DataType" : "STRING",
+              "ParamName" : "{T_RM_RULE.RULE_ID}"
+            } ]
+          },
+          "TableName" : "T_PUB_RES_CTX_RELATION"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RULE_ID = ? and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_GROUP_RULE_MAPPING.RULE_ID}"
+          }, {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_GROUP_RULE_MAPPING.RECORD_USAGE}"
+          } ]
+        },
+        "TableName" : "T_RM_RULE"
+      } ],
+      "SetName" : "RuleByGroupAndRecordUsage"
+    }, {
+      "BaseTableName" : "T_RM_EVENT",
+      "CriteriaList" : [ {
+        "Condition" : "EVENT_ID in (:eventIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "EventByEventIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "eventIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "EVENT_ID in (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "eventIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "DRIVER_ID = {T_RM_EVENT.DRIVER_ID}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "DRIVER_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_EVENT.DRIVER_ID}"
+          } ]
+        },
+        "TableName" : "T_RM_DRIVER"
+      } ],
+      "SetName" : "EventById"
+    }, {
+      "BaseTableName" : "T_RM_EVENT",
+      "CriteriaList" : [ {
+        "Condition" : "DRIVER_ID in (:driverIdList) and RECORD_USAGE = :recordUsage",
+        "CriteriaName" : "DriverByDriverIdList",
+        "ParameterList" : [ {
+          "DataType" : "ARRAY",
+          "ParamName" : "driverIdList"
+        }, {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "DRIVER_ID in (?) and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "ARRAY",
+            "ParamName" : "driverIdList"
+          }, {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "DRIVER_ID = {T_RM_EVENT.DRIVER_ID}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "DRIVER_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_EVENT.DRIVER_ID}"
+          } ]
+        },
+        "TableName" : "T_RM_DRIVER"
+      } ],
+      "SetName" : "DriverById"
+    }, {
+      "BaseTableName" : "T_RM_EVENT_GROUP_MAPPING",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID = :groupId",
+        "CriteriaName" : "groupIdAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "LONG",
+          "ParamName" : "groupId"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "LONG",
+            "ParamName" : "groupId"
+          } ]
+        }
+      }, {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID IN (:groupIdArr)",
+        "CriteriaName" : "groupIdArrAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "ARRAY",
+          "ParamName" : "groupIdArr"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "ARRAY",
+            "ParamName" : "groupIdArr"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "GROUP_ID = {T_RM_EVENT_GROUP_MAPPING.GROUP_ID} and RECORD_USAGE = {T_RM_EVENT_GROUP_MAPPING.RECORD_USAGE}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "GROUP_ID = ? and RECORD_USAGE = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_EVENT_GROUP_MAPPING.GROUP_ID}"
+          }, {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_EVENT_GROUP_MAPPING.RECORD_USAGE}"
+          } ]
+        },
+        "TableName" : "T_RM_GROUP"
+      } ],
+      "SetName" : "GroupById"
+    }, {
+      "BaseTableName" : "T_RM_EVENT_GROUP_MAPPING",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID IN (:groupIds)",
+        "CriteriaName" : "groupIdsAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "ARRAY",
+          "ParamName" : "groupIds"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "ARRAY",
+            "ParamName" : "groupIds"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "SetName" : "GroupMappingByGroupId"
+    }, {
+      "BaseTableName" : "T_RM_GROUP",
+      "CriteriaList" : [ {
+        "Condition" : "RECORD_USAGE = :recordUsage and GROUP_ID IN (:groupIds)",
+        "CriteriaName" : "groupIdsAndRecordUsage",
+        "ParameterList" : [ {
+          "DataType" : "INTEGER",
+          "ParamName" : "recordUsage"
+        }, {
+          "DataType" : "ARRAY",
+          "ParamName" : "groupIds"
+        } ],
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "RECORD_USAGE = ? and GROUP_ID IN (?)",
+          "ParamList" : [ {
+            "DataType" : "INTEGER",
+            "ParamName" : "recordUsage"
+          }, {
+            "DataType" : "ARRAY",
+            "ParamName" : "groupIds"
+          } ]
+        }
+      } ],
+      "Description" : null,
+      "IncludeList" : [ {
+        "Condition" : "GROUP_ID = {T_RM_GROUP.PUB_GROUP_ID}",
+        "DatasetName" : null,
+        "PreprocessCondition_" : {
+          "ConditionWithParams" : "GROUP_ID = ?",
+          "ParamList" : [ {
+            "DataType" : "STRING",
+            "ParamName" : "{T_RM_GROUP.PUB_GROUP_ID}"
+          } ]
+        },
+        "TableName" : "T_PUB_CONFIGURATION_GROUP"
+      } ],
+      "SetName" : "GroupWithPubGroupById"
+    } ],
+    "Description" : null,
+    "ModuleName" : "rule",
+    "TableList" : [ {
+      "ColumnList" : [ {
+        "ColumnName" : "RULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RULE_LEVEL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "STATUS",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "APPLICABLE_CONDITION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONTENT",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "RULE_OBJECT_CODE",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_RULE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "PUB_GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_GROUP"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "EVENT_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "EVENT_TYPE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_EVENT_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "DRIVER_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "SUPPORT_EVENT_TYPES",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIXED_EVENT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "DRIVER_TYPE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_DRIVER_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "DRIVER_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DRIVER_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "DRIVER_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "NAME",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_DRIVER"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "EVENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DRIVER_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "EVENT_TYPE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "TRACKING_FIELDS",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "EVENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "DRIVER_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "DRIVER_ID",
+        "ReferencingTableName" : "T_RM_DRIVER"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "EVENT_TYPE",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "EVENT_TYPE",
+        "ReferencingTableName" : "T_RM_EVENT_TYPE"
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_EVENT"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "MAPPING_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "APPLICABLE_CONDITION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "EVENT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "RUN_PRIORITY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "MAPPING_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "EVENT_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "EVENT_ID",
+        "ReferencingTableName" : "T_RM_EVENT"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "GROUP_ID",
+        "ReferencingTableName" : "T_RM_GROUP"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_EVENT_GROUP_MAPPING"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "MAPPING_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "RUN_PRIORITY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "MAPPING_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RULE_ID",
+        "ReferencingTableName" : "T_RM_RULE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RULE_ID",
+        "ReferencingTableName" : "T_RM_GROUP"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_GROUP_RULE_MAPPING"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RULE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DEFAULT_MESSAGE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_VALIDATION_RULE_TYPE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RULE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MODEL",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "OBJECT_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "FIELD_CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "MESSAGE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "BUSI_CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "SEVERITY",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "PARAM",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "CONDITION_",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "STATUS",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CODE",
+          "DataType" : "STRING"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_VALIDATION_RULE"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "MAPPING_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "VALIDATION_RULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "INTEGER"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "MAPPING_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "GROUP_ID",
+        "ReferencingTableName" : "T_RM_GROUP"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "VALIDATION_RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RULE_ID",
+        "ReferencingTableName" : "T_RM_VALIDATION_RULE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "VALIDATION_RULE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_RM_VLD_GRP_RULE_MAPPING"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "RES_CTX_RELATION_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CONTEXT_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "CONTEXT_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "RES_CTX_RELATION_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "RESOURCE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Reference",
+        "ReferencingColumnName" : "RULE_ID",
+        "ReferencingTableName" : "T_RM_RULE"
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "CONTEXT_ID",
+          "DataType" : "LONG"
+        }, {
+          "ColumnName" : "RESOURCE_ID",
+          "DataType" : "LONG"
+        }, {
+          "ColumnName" : "CONTEXT_TYPE_ID",
+          "DataType" : "LONG"
+        }, {
+          "ColumnName" : "RESOURCE_TYPE_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "OrderList" : [ {
+        "ColumnName" : "RES_CTX_RELATION_ID",
+        "Type" : "ASC"
+      } ],
+      "TableName" : "T_PUB_RES_CTX_RELATION"
+    }, {
+      "ColumnList" : [ {
+        "ColumnName" : "GROUP_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "CODE",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "NAME",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "DESCRIPTION",
+        "DataType" : "STRING"
+      }, {
+        "ColumnName" : "RESOURCE_TYPE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "UPDATE_BY",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "RECORD_USAGE",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "INSERT_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "UPDATE_TIME",
+        "DataType" : "DATE"
+      }, {
+        "ColumnName" : "MODULE_ID",
+        "DataType" : "LONG"
+      }, {
+        "ColumnName" : "DYNAMIC_FIELDS",
+        "DataType" : "STRING"
+      } ],
+      "KeyList" : [ {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Primary",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      }, {
+        "ColumnList" : [ {
+          "ColumnName" : "GROUP_ID",
+          "DataType" : "LONG"
+        } ],
+        "KeyType" : "Business",
+        "ReferencingColumnName" : null,
+        "ReferencingTableName" : null
+      } ],
+      "NeedAnalysis" : true,
+      "TableName" : "T_PUB_CONFIGURATION_GROUP"
+    } ]
+  } ],
+  "Preprocessed_" : true,
+  "TableDependencyMap_" : {
+    "T_RM_DRIVER" : {
+      "T_RM_EVENT" : [ "DRIVER_ID" ]
+    },
+    "T_RM_EVENT_TYPE" : {
+      "T_RM_EVENT" : [ "EVENT_TYPE" ]
+    },
+    "T_RM_VALIDATION_RULE" : {
+      "T_RM_VLD_GRP_RULE_MAPPING" : [ "VALIDATION_RULE_ID" ]
+    },
+    "T_RM_RULE" : {
+      "T_RM_GROUP_RULE_MAPPING" : [ "RULE_ID" ],
+      "T_PUB_RES_CTX_RELATION" : [ "RESOURCE_ID" ]
+    },
+    "T_RM_EVENT" : {
+      "T_RM_EVENT_GROUP_MAPPING" : [ "EVENT_ID" ]
+    },
+    "T_RM_GROUP" : {
+      "T_RM_GROUP_RULE_MAPPING" : [ "GROUP_ID" ],
+      "T_RM_EVENT_GROUP_MAPPING" : [ "GROUP_ID" ],
+      "T_RM_VLD_GRP_RULE_MAPPING" : [ "GROUP_ID" ]
+    }
+  }
+}
