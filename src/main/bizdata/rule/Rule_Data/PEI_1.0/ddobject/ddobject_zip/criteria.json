@@ -1,0 +1,14 @@
+{
+  "Criteria" : "contextId",
+  "Dataset" : "BizObjectByContextId",
+  "ParamMap" : {
+    "recordUsage" : 5,
+    "contextId" : 360010654
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360010654, -2, 360010458, "PEI_1.0(Portable Electronic insurance)", 17312387, 17312387, 1, "{\"ProductCode\":\"PEI\",\"ProductVersion\":\"1.0\"}", null, 1559580666000, 1559580666000, "PEI_1.0(Portable Electronic insurance)", "PEI_1.0(Portable Electronic insurance)" ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}

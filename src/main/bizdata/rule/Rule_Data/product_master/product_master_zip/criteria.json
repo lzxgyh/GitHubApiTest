@@ -1,0 +1,14 @@
+{
+  "Criteria" : "masterId",
+  "Dataset" : "ProductMaster",
+  "ParamMap" : {
+    "masterId" : 360010457,
+    "recordUsage" : 5
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360010457, null, "PEI", "Brazil Portable Electronic insurance", "PEI", -9, null, "N", "{\"RIBusinessFlag\":1}", -500, null, 17312387, 17312387, 5, null, "PEI", 1559580665000, 1568995545000, "Policy", 3, 30000, 35000, 35200, null, "J", "Accident" ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}

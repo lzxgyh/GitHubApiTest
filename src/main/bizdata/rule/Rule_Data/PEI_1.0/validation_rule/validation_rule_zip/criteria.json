@@ -1,0 +1,18 @@
+{
+  "Criteria" : "busiContextId",
+  "Dataset" : "ValidationRuleByDDContext",
+  "ParamMap" : {
+    "recordUsage" : 5,
+    "busiContextId" : 360010654
+  },
+  "RootRecordList" : [ {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 360075546, 8, "PEI Sum Insured", "The Sum Insured cannot be higher than 6.000", "PolicyRisk", null, "MarketValue", "The Sum Insured cannot be higher than 6.000", 360010654, 1, "{\"Max\":\"6000\",\"Equals\":\"Y\"}", "{\"Left\":{\"Lookup\":{}},\"Right\":{\"Lookup\":{}}}", 1, 17312387, 375425830, 5, 1559747310000, 1620313901000, "PEI Sum Insured" ],
+    "ReferencedRecord" : false
+  }, {
+    "Action" : "UNKNOWN",
+    "ColumnValueList" : [ 375690489, 5, "Make", null, "PolicyRisk", null, "Make", "Make is 2", 360010654, 1, "{\"Value\":\"2\"}", "{\"Left\":{\"Lookup\":{}},\"Right\":{\"Lookup\":{}}}", 1, 375425830, 375425830, 5, 1607097823000, 1607097823000, "Make" ],
+    "ReferencedRecord" : false
+  } ],
+  "Strategy" : "Replace"
+}
